@@ -1,0 +1,69 @@
+extern crate libc;
+
+#[macro_use]
+extern crate ioctl;
+
+use libc::{c_char, c_int, c_uint, uint16_t, int32_t, uint32_t};
+
+pub const ABS_MAX: usize = 0x3f;
+pub const ABS_CNT: usize = ABS_MAX + 1;
+
+pub const UINPUT_MAX_NAME_SIZE: usize = 80;
+
+#[repr(C)]
+pub struct input_id {
+	pub bustype: uint16_t,
+	pub vendor:  uint16_t,
+	pub product: uint16_t,
+	pub version: uint16_t,
+}
+
+#[repr(C)]
+pub struct uinput_user_dev {
+	pub name: [c_char; UINPUT_MAX_NAME_SIZE],
+	pub id:   input_id,
+
+	pub ff_effects_max: uint32_t,
+	pub absmax:  [int32_t; ABS_CNT],
+	pub absmin:  [int32_t; ABS_CNT],
+	pub absfuzz: [int32_t; ABS_CNT],
+	pub absflat: [int32_t; ABS_CNT],
+}
+
+//#[repr(C)]
+//pub struct uinput_ff_upload {
+//	pub request_id: uint32_t,
+//	pub retval:     int32_t,
+//	pub effect:     ff_effect,
+//	pub old:        ff_effect,
+//}
+//
+//#[repr(C)]
+//pub struct uinput_ff_erase {
+//	pub request_id: uint32_t,
+//	pub retval:     int32_t,
+//	pub effect_id:  uint32_t,
+//}
+
+ioctl!(none ui_dev_create with b'U', 1);
+ioctl!(none ui_dev_destroy with b'U', 2);
+
+ioctl!(write ui_set_evbit   with b'U', 100; c_int);
+ioctl!(write ui_set_keybit  with b'U', 101; c_int);
+ioctl!(write ui_set_absbit  with b'U', 102; c_int);
+ioctl!(write ui_set_relbit  with b'U', 103; c_int);
+ioctl!(write ui_set_mscbit  with b'U', 104; c_int);
+ioctl!(write ui_set_ledbit  with b'U', 105; c_int);
+ioctl!(write ui_set_sndbit  with b'U', 106; c_int);
+ioctl!(write ui_set_ffbit   with b'U', 107; c_int);
+ioctl!(write ui_set_phys    with b'U', 108; *const c_char);
+ioctl!(write ui_set_swbit   with b'U', 109; c_int);
+ioctl!(write ui_set_propbit with b'U', 110; c_int);
+
+//ioctl!(readwrite ui_begin_ff_upload with b'U', 200, uinput_ff_upload);
+//ioctl!(readwrite ui_end_ff_upload with b'U', 201, uinput_ff_upload);
+
+//ioctl!(readwrite ui_begin_ff_erase with b'U', 200, uinput_ff_erase);
+//ioctl!(readwrite ui_end_ff_erase with b'U', 201, uinput_ff_erase);
+
+ioctl!(read ui_get_version with b'U', 45; c_uint);
