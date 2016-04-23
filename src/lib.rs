@@ -3,12 +3,12 @@ extern crate libc;
 #[macro_use]
 extern crate ioctl;
 
+mod events;
+pub use events::*;
+
 use libc::{c_char, c_int, c_uint, uint16_t, int32_t, uint32_t};
 
-pub const ABS_MAX: usize = 0x3f;
-pub const ABS_CNT: usize = ABS_MAX + 1;
-
-pub const UINPUT_MAX_NAME_SIZE: usize = 80;
+pub const UINPUT_MAX_NAME_SIZE: c_int = 80;
 
 #[repr(C)]
 pub struct input_id {
@@ -20,14 +20,14 @@ pub struct input_id {
 
 #[repr(C)]
 pub struct uinput_user_dev {
-	pub name: [c_char; UINPUT_MAX_NAME_SIZE],
+	pub name: [c_char; UINPUT_MAX_NAME_SIZE as usize],
 	pub id:   input_id,
 
 	pub ff_effects_max: uint32_t,
-	pub absmax:  [int32_t; ABS_CNT],
-	pub absmin:  [int32_t; ABS_CNT],
-	pub absfuzz: [int32_t; ABS_CNT],
-	pub absflat: [int32_t; ABS_CNT],
+	pub absmax:  [int32_t; ABS_CNT as usize],
+	pub absmin:  [int32_t; ABS_CNT as usize],
+	pub absfuzz: [int32_t; ABS_CNT as usize],
+	pub absflat: [int32_t; ABS_CNT as usize],
 }
 
 //#[repr(C)]
