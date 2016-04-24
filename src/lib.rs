@@ -1,7 +1,7 @@
 extern crate libc;
 
 #[macro_use]
-extern crate ioctl;
+extern crate nix;
 
 mod events;
 pub use events::*;
@@ -10,6 +10,7 @@ use libc::{c_char, c_int, c_uint, uint16_t, int32_t, uint32_t};
 
 pub const UINPUT_MAX_NAME_SIZE: c_int = 80;
 
+#[derive(Clone, Copy, PartialEq, Eq, Debug)]
 #[repr(C)]
 pub struct input_id {
 	pub bustype: uint16_t,
