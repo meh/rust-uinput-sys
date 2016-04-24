@@ -1,7 +1,7 @@
 extern crate libc;
 
 #[macro_use]
-extern crate nix;
+extern crate ioctl;
 
 mod events;
 pub use events::*;
