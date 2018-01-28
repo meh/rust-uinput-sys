@@ -11,4 +11,4 @@ keywords    = ["linux", "input"]
 
 [dependencies]
 libc  = "0.2"
-ioctl = "0.3"
+nix  = "0.10"

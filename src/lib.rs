@@ -1,7 +1,7 @@
 extern crate libc;
 
 #[macro_use]
-extern crate ioctl;
+extern crate nix;
 
 use std::mem;
 
@@ -12,7 +12,7 @@ use libc::timeval;
 macro_rules! uin {
 	(write $name:ident with $ioty:expr, $nr:expr; $ty:ty) => (
 		pub unsafe fn $name(fd: c_int, val: $ty) -> c_int {
-			ioctl::ioctl(fd, iow!($ioty, $nr, mem::size_of::<$ty>()) as c_ulong, val)
+			libc::ioctl(fd, iow!($ioty, $nr, mem::size_of::<$ty>()) as c_ulong, val)
 		}
 	);
 }
