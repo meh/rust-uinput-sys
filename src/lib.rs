@@ -1,7 +1,7 @@
 extern crate libc;
 
 #[macro_use]
-extern crate ioctl;
+extern crate ioctl_sys as ioctl;
 
 use std::mem;
 

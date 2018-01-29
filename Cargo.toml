@@ -10,5 +10,5 @@ repository  = "https://github.com/meh/rust-uinput-sys"
 keywords    = ["linux", "input"]
 
 [dependencies]
-libc  = "0.2"
-ioctl = "0.3"
+libc      = "0.2"
+ioctl-sys = "0.5"
