@@ -72,8 +72,8 @@ ioctl!(none ui_dev_destroy with b'U', 2);
 
 uin!(write ui_set_evbit   with b'U', 100; c_int);
 uin!(write ui_set_keybit  with b'U', 101; c_int);
-uin!(write ui_set_absbit  with b'U', 102; c_int);
-uin!(write ui_set_relbit  with b'U', 103; c_int);
+uin!(write ui_set_relbit  with b'U', 102; c_int);
+uin!(write ui_set_absbit  with b'U', 103; c_int);
 uin!(write ui_set_mscbit  with b'U', 104; c_int);
 uin!(write ui_set_ledbit  with b'U', 105; c_int);
 uin!(write ui_set_sndbit  with b'U', 106; c_int);
