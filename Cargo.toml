@@ -11,4 +11,4 @@ keywords    = ["linux", "input"]
 
 [dependencies]
 libc      = "0.2"
-ioctl-sys = "0.5"
+ioctl-sys = "0.7"
