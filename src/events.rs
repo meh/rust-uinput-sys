@@ -258,7 +258,8 @@ pub const KEY_PLAYCD:         c_int = 200;
 pub const KEY_PAUSECD:        c_int = 201;
 pub const KEY_PROG3:          c_int = 202;
 pub const KEY_PROG4:          c_int = 203;
-pub const KEY_DASHBOARD:      c_int = 204; /* AL Dashboard */
+pub const KEY_ALL_APPLICATIONS: c_int = 204; /* AC Desktop Show All Applications */
+pub const KEY_DASHBOARD:      c_int = KEY_ALL_APPLICATIONS; /* AL Dashboard */
 pub const KEY_SUSPEND:        c_int = 205;
 pub const KEY_CLOSE:          c_int = 206; /* AC Close */
 pub const KEY_PLAY:           c_int = 207;
@@ -384,6 +385,7 @@ pub const BTN_TOOL_FINGER:    c_int = 0x145;
 pub const BTN_TOOL_MOUSE:     c_int = 0x146;
 pub const BTN_TOOL_LENS:      c_int = 0x147;
 pub const BTN_TOOL_QUINTTAP:  c_int = 0x148; /* Five fingers on trackpad */
+pub const BTN_STYLUS3:        c_int = 0x149;
 pub const BTN_TOUCH:          c_int = 0x14a;
 pub const BTN_STYLUS:         c_int = 0x14b;
 pub const BTN_STYLUS2:        c_int = 0x14c;
@@ -415,10 +417,12 @@ pub const KEY_LANGUAGE:          c_int = 0x170;
 pub const KEY_TITLE:             c_int = 0x171;
 pub const KEY_SUBTITLE:          c_int = 0x172;
 pub const KEY_ANGLE:             c_int = 0x173;
-pub const KEY_ZOOM:              c_int = 0x174;
+pub const KEY_FULL_SCREEN:       c_int = 0x174; /* AC View Toggle */
+pub const KEY_ZOOM:              c_int = KEY_FULL_SCREEN;
 pub const KEY_MODE:              c_int = 0x175;
 pub const KEY_KEYBOARD:          c_int = 0x176;
-pub const KEY_SCREEN:            c_int = 0x177;
+pub const KEY_ASPECT_RATIO:      c_int = 0x177; /* HUTRR37: Aspect */
+pub const KEY_SCREEN:            c_int = KEY_ASPECT_RATIO;
 pub const KEY_PC:                c_int = 0x178; /* Media Select Computer */
 pub const KEY_TV:                c_int = 0x179; /* Media Select TV */
 pub const KEY_TV2:               c_int = 0x17a; /* Media Select Cable */
@@ -489,6 +493,9 @@ pub const KEY_MEDIA_REPEAT:   c_int = 0x1b7; /* Consumer - transport control */
 pub const KEY_10CHANNELSUP:   c_int = 0x1b8; /* 10 channels up : c_int = 10+ */
 pub const KEY_10CHANNELSDOWN: c_int = 0x1b9; /* 10 channels down : c_int = 10- */
 pub const KEY_IMAGES:         c_int = 0x1ba; /* AL Image Browser */
+pub const KEY_NOTIFICATION_CENTER: c_int = 0x1bc; /* Show/hide the notification center */
+pub const KEY_PICKUP_PHONE:   c_int = 0x1bd; /* Answer incoming call */
+pub const KEY_HANGUP_PHONE:   c_int = 0x1be; /* Decline incoming call */
 
 pub const KEY_DEL_EOL:  c_int = 0x1c0;
 pub const KEY_DEL_EOS:  c_int = 0x1c1;
@@ -516,6 +523,7 @@ pub const KEY_FN_E:   c_int = 0x1e1;
 pub const KEY_FN_F:   c_int = 0x1e2;
 pub const KEY_FN_S:   c_int = 0x1e3;
 pub const KEY_FN_B:   c_int = 0x1e4;
+pub const KEY_FN_RIGHT_SHIFT: c_int = 0x1e5;
 
 pub const KEY_BRL_DOT1:  c_int = 0x1f1;
 pub const KEY_BRL_DOT2:  c_int = 0x1f2;
@@ -570,6 +578,7 @@ pub const BTN_DPAD_LEFT:  c_int = 0x222;
 pub const BTN_DPAD_RIGHT: c_int = 0x223;
 
 pub const KEY_ALS_TOGGLE: c_int = 0x230; /* Ambient light sensor */
+pub const KEY_ROTATE_LOCK_TOGGLE: c_int = 0x231; /* Display rotation lock */
 
 pub const KEY_BUTTONCONFIG: c_int = 0x240;  /* AL Button Configuration */
 pub const KEY_TASKMANAGER:  c_int = 0x241;  /* AL Task/Project Manager */
@@ -578,6 +587,13 @@ pub const KEY_CONTROLPANEL: c_int = 0x243;  /* AL Control Panel */
 pub const KEY_APPSELECT:    c_int = 0x244;  /* AL Select Task/Application */
 pub const KEY_SCREENSAVER:  c_int = 0x245;  /* AL Screen Saver */
 pub const KEY_VOICECOMMAND: c_int = 0x246;  /* Listening Voice Command */
+pub const KEY_ASSISTANT:    c_int = 0x247; /* AL Context-aware desktop assistant */
+pub const KEY_KBD_LAYOUT_NEXT: c_int = 0x248; /* AC Next Keyboard Layout Select */
+pub const KEY_EMOJI_PICKER: c_int = 0x249; /* Show/hide emoji picker (HUTRR101) */
+pub const KEY_DICTATE:      c_int = 0x24a; /* Start or Stop Voice Dictation Session (HUTRR99) */
+pub const KEY_CAMERA_ACCESS_ENABLE: c_int = 0x24b; /* Enables programmatic access to camera devices. (HUTRR72) */
+pub const KEY_CAMERA_ACCESS_DISABLE: c_int = 0x24c; /* Disables programmatic access to camera devices. (HUTRR72) */
+pub const KEY_CAMERA_ACCESS_TOGGLE: c_int = 0x24d; /* Toggles the current state of the camera access control. (HUTRR72) */
 
 pub const KEY_BRIGHTNESS_MIN: c_int = 0x250; /* Set Brightness to Minimum */
 pub const KEY_BRIGHTNESS_MAX: c_int = 0x251; /* Set Brightness to Maximum */
@@ -588,6 +604,136 @@ pub const KEY_KBDINPUTASSIST_PREVGROUP: c_int = 0x262;
 pub const KEY_KBDINPUTASSIST_NEXTGROUP: c_int = 0x263;
 pub const KEY_KBDINPUTASSIST_ACCEPT:    c_int = 0x264;
 pub const KEY_KBDINPUTASSIST_CANCEL:    c_int = 0x265;
+
+/* Diagonal movement keys */
+pub const KEY_RIGHT_UP:     c_int = 0x266;
+pub const KEY_RIGHT_DOWN:   c_int = 0x267;
+pub const KEY_LEFT_UP:      c_int = 0x268;
+pub const KEY_LEFT_DOWN:    c_int = 0x269;
+
+pub const KEY_ROOT_MENU:        c_int = 0x26a; /* Show Device's Root Menu */
+pub const KEY_MEDIA_TOP_MENU:   c_int = 0x26b; /* Show Top Menu of the Media (e.g. DVD) */
+pub const KEY_NUMERIC_11:       c_int = 0x26c;
+pub const KEY_NUMERIC_12:       c_int = 0x26d;
+/*
+ * Toggle Audio Description: refers to an audio service that helps blind and
+ * visually impaired consumers understand the action in a program. Note: in
+ * some countries this is referred to as "Video Description".
+ */
+pub const KEY_AUDIO_DESC:       c_int = 0x26e;
+pub const KEY_3D_MODE:          c_int = 0x26f;
+pub const KEY_NEXT_FAVORITE:    c_int = 0x270;
+pub const KEY_STOP_RECORD:      c_int = 0x271;
+pub const KEY_PAUSE_RECORD:     c_int = 0x272;
+pub const KEY_VOD:              c_int = 0x273; /* Video on Demand */
+pub const KEY_UNMUTE:           c_int = 0x274;
+pub const KEY_FASTREVERSE:      c_int = 0x275;
+pub const KEY_SLOWREVERSE:      c_int = 0x276;
+/*
+ * Control a data application associated with the currently viewed channel,
+ * e.g. teletext or data broadcast application (MHEG, MHP, HbbTV, etc.)
+ */
+pub const KEY_DATA:             c_int = 0x277;
+
+pub const KEY_ONSCREEN_KEYBOARD:        c_int = 0x278;
+pub const KEY_PRIVACY_SCREEN_TOGGLE:    c_int = 0x279; /* Electronic privacy screen control */
+pub const KEY_SELECTIVE_SCREENSHOT:     c_int = 0x27a; /* Select an area of screen to be copied */
+
+/* Move the focus to the next or previous user controllable element within a UI container */
+pub const KEY_NEXT_ELEMENT:     c_int = 0x27b;
+pub const KEY_PREVIOUS_ELEMENT: c_int = 0x27c;
+
+/* Toggle Autopilot engagement */
+pub const KEY_AUTOPILOT_ENGAGE_TOGGLE:  c_int = 0x27d;
+
+/* Shortcut Keys */
+pub const KEY_MARK_WAYPOINT:        c_int = 0x27e;
+pub const KEY_SOS:                  c_int = 0x27f;
+pub const KEY_NAV_CHART:            c_int = 0x280;
+pub const KEY_FISHING_CHART:        c_int = 0x281;
+pub const KEY_SINGLE_RANGE_RADAR:   c_int = 0x282;
+pub const KEY_DUAL_RANGE_RADAR:     c_int = 0x283;
+pub const KEY_RADAR_OVERLAY:        c_int = 0x284;
+pub const KEY_TRADITIONAL_SONAR:    c_int = 0x285;
+pub const KEY_CLEARVU_SONAR:        c_int = 0x286;
+pub const KEY_SIDEVU_SONAR:         c_int = 0x287;
+pub const KEY_NAV_INFO:             c_int = 0x288;
+pub const KEY_BRIGHTNESS_MENU:      c_int = 0x289;
+
+/*
+ * Some keyboards have keys which do not have a defined meaning, these keys
+ * are intended to be programmed / bound to macros by the user. For most
+ * keyboards with these macro-keys the key-sequence to inject, or action to
+ * take, is all handled by software on the host side. So from the kernel's
+ * point of view these are just normal keys.
+ *
+ * The KEY_MACRO# codes below are intended for such keys, which may be labeled
+ * e.g. G1-G18, or S1 - S30. The KEY_MACRO# codes MUST NOT be used for keys
+ * where the marking on the key does indicate a defined meaning / purpose.
+ *
+ * The KEY_MACRO# codes MUST also NOT be used as fallback for when no existing
+ * KEY_FOO define matches the marking / purpose. In this case a new KEY_FOO
+ * define MUST be added.
+ */
+pub const KEY_MACRO1:   c_int = 0x290;
+pub const KEY_MACRO2:   c_int = 0x291;
+pub const KEY_MACRO3:   c_int = 0x292;
+pub const KEY_MACRO4:   c_int = 0x293;
+pub const KEY_MACRO5:   c_int = 0x294;
+pub const KEY_MACRO6:   c_int = 0x295;
+pub const KEY_MACRO7:   c_int = 0x296;
+pub const KEY_MACRO8:   c_int = 0x297;
+pub const KEY_MACRO9:   c_int = 0x298;
+pub const KEY_MACRO10:  c_int = 0x299;
+pub const KEY_MACRO11:  c_int = 0x29a;
+pub const KEY_MACRO12:  c_int = 0x29b;
+pub const KEY_MACRO13:  c_int = 0x29c;
+pub const KEY_MACRO14:  c_int = 0x29d;
+pub const KEY_MACRO15:  c_int = 0x29e;
+pub const KEY_MACRO16:  c_int = 0x29f;
+pub const KEY_MACRO17:  c_int = 0x2a0;
+pub const KEY_MACRO18:  c_int = 0x2a1;
+pub const KEY_MACRO19:  c_int = 0x2a2;
+pub const KEY_MACRO20:  c_int = 0x2a3;
+pub const KEY_MACRO21:  c_int = 0x2a4;
+pub const KEY_MACRO22:  c_int = 0x2a5;
+pub const KEY_MACRO23:  c_int = 0x2a6;
+pub const KEY_MACRO24:  c_int = 0x2a7;
+pub const KEY_MACRO25:  c_int = 0x2a8;
+pub const KEY_MACRO26:  c_int = 0x2a9;
+pub const KEY_MACRO27:  c_int = 0x2aa;
+pub const KEY_MACRO28:  c_int = 0x2ab;
+pub const KEY_MACRO29:  c_int = 0x2ac;
+pub const KEY_MACRO30:  c_int = 0x2ad;
+
+/*
+ * Some keyboards with the macro-keys described above have some extra keys
+ * for controlling the host-side software responsible for the macro handling:
+ * -A macro recording start/stop key. Note that not all keyboards which emit
+ *  KEY_MACRO_RECORD_START will also emit KEY_MACRO_RECORD_STOP if
+ *  KEY_MACRO_RECORD_STOP is not advertised, then KEY_MACRO_RECORD_START
+ *  should be interpreted as a recording start/stop toggle;
+ * -Keys for switching between different macro (pre)sets, either a key for
+ *  cycling through the configured presets or keys to directly select a preset.
+ */
+pub const KEY_MACRO_RECORD_START:   c_int = 0x2b0;
+pub const KEY_MACRO_RECORD_STOP:    c_int = 0x2b1;
+pub const KEY_MACRO_PRESET_CYCLE:   c_int = 0x2b2;
+pub const KEY_MACRO_PRESET1:        c_int = 0x2b3;
+pub const KEY_MACRO_PRESET2:        c_int = 0x2b4;
+pub const KEY_MACRO_PRESET3:        c_int = 0x2b5;
+
+/*
+ * Some keyboards have a buildin LCD panel where the contents are controlled
+ * by the host. Often these have a number of keys directly below the LCD
+ * intended for controlling a menu shown on the LCD. These keys often don't
+ * have any labeling so we just name them KEY_KBD_LCD_MENU#
+ */
+pub const KEY_KBD_LCD_MENU1:    c_int = 0x2b8;
+pub const KEY_KBD_LCD_MENU2:    c_int = 0x2b9;
+pub const KEY_KBD_LCD_MENU3:    c_int = 0x2ba;
+pub const KEY_KBD_LCD_MENU4:    c_int = 0x2bb;
+pub const KEY_KBD_LCD_MENU5:    c_int = 0x2bc;
 
 pub const BTN_TRIGGER_HAPPY:   c_int = 0x2c0;
 pub const BTN_TRIGGER_HAPPY1:  c_int = 0x2c0;
@@ -650,6 +796,16 @@ pub const REL_HWHEEL: c_int = 0x06;
 pub const REL_DIAL:   c_int = 0x07;
 pub const REL_WHEEL:  c_int = 0x08;
 pub const REL_MISC:   c_int = 0x09;
+/*
+ * 0x0a is reserved and should not be used in input drivers.
+ * It was used by HID as REL_MISC+1 and userspace needs to detect if
+ * the next REL_* event is correct or is just REL_MISC + n.
+ * We define here REL_RESERVED so userspace can rely on it and detect
+ * the situation described above.
+ */
+pub const REL_RESERVED:         c_int = 0x0a;
+pub const REL_WHEEL_HI_RES:     c_int = 0x0b;
+pub const REL_HWHEEL_HI_RES:    c_int = 0x0c;
 pub const REL_MAX:    c_int = 0x0f;
 pub const REL_CNT:    c_int = REL_MAX + 1;
 
@@ -683,8 +839,18 @@ pub const ABS_TILT_Y:     c_int = 0x1b;
 pub const ABS_TOOL_WIDTH: c_int = 0x1c;
 
 pub const ABS_VOLUME: c_int = 0x20;
+pub const ABS_PROFILE:  c_int = 0x21;
 
 pub const ABS_MISC: c_int = 0x28;
+
+/*
+ * 0x2e is reserved and should not be used in input drivers.
+ * It was used by HID as ABS_MISC+6 and userspace needs to detect if
+ * the next ABS_* event is correct or is just ABS_MISC + n.
+ * We define here ABS_RESERVED so userspace can rely on it and detect
+ * the situation described above.
+ */
+pub const ABS_RESERVED: c_int = 0x2e;
 
 pub const ABS_MT_SLOT:        c_int = 0x2f; /* MT slot being modified */
 pub const ABS_MT_TOUCH_MAJOR: c_int = 0x30; /* Major axis of touching ellipse */
@@ -726,7 +892,9 @@ pub const SW_FRONT_PROXIMITY:      c_int = 0x0b;  /* set = front proximity senso
 pub const SW_ROTATE_LOCK:          c_int = 0x0c;  /* set = rotate locked/disabled */
 pub const SW_LINEIN_INSERT:        c_int = 0x0d;  /* set = inserted */
 pub const SW_MUTE_DEVICE:          c_int = 0x0e;  /* set = device disabled */
-pub const SW_MAX:                  c_int = 0x0f;
+pub const SW_PEN_INSERTED:         c_int = 0x0f;  /* set = pen inserted */
+pub const SW_MACHINE_COVER:        c_int = 0x10;  /* set = cover closed */
+pub const SW_MAX:                  c_int = 0x10;
 pub const SW_CNT:                  c_int = SW_MAX + 1;
 
 /*

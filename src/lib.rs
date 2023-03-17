@@ -40,6 +40,34 @@ pub struct input_id {
 	pub version: uint16_t,
 }
 
+#[derive(Clone, Copy)]
+#[repr(C)]
+pub struct input_absinfo {
+	pub value:         int32_t,
+	pub minimum:       int32_t,
+	pub maximum:       int32_t,
+	pub fuzz:          int32_t,
+	pub flat:          int32_t,
+	pub resolution:    int32_t,
+}
+
+#[derive(Clone, Copy)]
+#[repr(C)]
+pub struct uinput_setup {
+	pub id:    input_id,
+	pub name:  [c_char; UINPUT_MAX_NAME_SIZE as usize],
+
+	pub ff_effects_max: uint32_t,
+}
+
+#[derive(Clone, Copy)]
+#[repr(C)]
+pub struct uinput_abs_setup {
+	pub code:      uint16_t, /* axis code */
+	/* filler:     uint16_t, */
+	pub absinfo:   input_absinfo,
+}
+
 #[repr(C)]
 pub struct uinput_user_dev {
 	pub name: [c_char; UINPUT_MAX_NAME_SIZE as usize],
@@ -70,6 +98,9 @@ pub struct uinput_user_dev {
 ioctl!(none ui_dev_create with b'U', 1);
 ioctl!(none ui_dev_destroy with b'U', 2);
 
+ioctl!(write ui_dev_setup with b'U', 3; uinput_setup);
+ioctl!(write ui_abs_setup with b'U', 4; uinput_abs_setup);
+
 uin!(write ui_set_evbit   with b'U', 100; c_int);
 uin!(write ui_set_keybit  with b'U', 101; c_int);
 uin!(write ui_set_relbit  with b'U', 102; c_int);
@@ -88,4 +119,5 @@ uin!(write ui_set_propbit with b'U', 110; c_int);
 //ioctl!(readwrite ui_begin_ff_erase with b'U', 200, uinput_ff_erase);
 //ioctl!(readwrite ui_end_ff_erase with b'U', 201, uinput_ff_erase);
 
+ioctl!(read buf ui_get_sysname with b'U', 44; c_char);
 ioctl!(read ui_get_version with b'U', 45; c_uint);
