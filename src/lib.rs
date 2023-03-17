@@ -119,4 +119,5 @@ uin!(write ui_set_propbit with b'U', 110; c_int);
 //ioctl!(readwrite ui_begin_ff_erase with b'U', 200, uinput_ff_erase);
 //ioctl!(readwrite ui_end_ff_erase with b'U', 201, uinput_ff_erase);
 
+ioctl!(read buf ui_get_sysname with b'U', 44; c_char);
 ioctl!(read ui_get_version with b'U', 45; c_uint);
